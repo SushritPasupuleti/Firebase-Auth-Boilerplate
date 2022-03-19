@@ -10,6 +10,18 @@ function App() {
 
 	const [user] = useAuthState(auth);
 
+	useEffect(() => {
+		if (user) {
+			console.log('user', user);
+			/// in case of phone number authentication
+			/// user data will include only `phoneNumber`.
+			/// this info should be sent as a payload to your server
+			/// along with `accessToken` in the Authorization Header
+			/// to register the user.
+		}
+	}, [user])
+	
+
 	return (
 		// if user session exists show
 		// logged in component
