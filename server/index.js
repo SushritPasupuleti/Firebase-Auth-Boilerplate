@@ -12,8 +12,24 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+const tokenVerifyMiddleware = (req, res, next) => {
+    const token = req.headers.authorization;
+    if (!token) {
+        return res.status(401).json({
+            message: 'Unauthorized'
+        });
+    }
+    next();
+}
+
+app.use(tokenVerifyMiddleware);
+
 app.get('/', (req, res) => {
     res.send('Hello World!')
+})
+
+app.post('/api/onboarding', tokenVerifyMiddleware, (req, res) => {
+    console.log("Message: ", req.body.message);
 })
 
 app.listen(port, () => {
