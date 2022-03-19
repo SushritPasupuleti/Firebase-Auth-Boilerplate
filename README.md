@@ -41,3 +41,27 @@ Save the token to localStorage or global state and use it for all requests by pa
             Authorization: `Bearer ${token}`,
     },
 ```
+
+### Using Middleware
+
+Navigate to [/server/index.js](/server/index.js), `tokenVerifyMiddleware` function can be injected as middleware in all requests to verify the passed Access Token in Authorization header.
+
+## Running the Code
+
+Ensure you have installed dependencies in both `/web` and `/server` folders with `npm install` and have set up `.env` files with the correct values as mentioned above.
+
+```bash
+cd server/
+node index.js
+```
+
+```bash
+cd web/
+npm start
+```
+
+## Recommended Libraries
+
+- Redux for State management. Store Access Tokens and User info in Redux store for easy access to all components.
+
+- Seqeulize as ORM for Postgres. Easy Raw Queries and well defined ORM API.
