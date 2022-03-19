@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import LoggedIn from './components/LoggedIn';
 import Login from './components/Login';
+import OnboardingForm from './components/OnboardingForm';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
 
 	useEffect(() => {
 		if (user) {
+			/// save object to local storage or Redux State for easy acess
 			console.log('user', user);
 			/// in case of phone number authentication
 			/// user data will include only `phoneNumber`.
@@ -20,18 +22,25 @@ function App() {
 			/// to register the user.
 		}
 	}, [user])
-	
+
+
+	if (user) {
+		return (
+			<div>
+				<LoggedIn />
+				{
+					user.email === null && (
+						/// only displayed if user has not filled onboarding form
+						<OnboardingForm />
+					)
+				}
+			</div>
+		)
+	}
 
 	return (
-		// if user session exists show
-		// logged in component
-		// else show login component
-		user ?
-			(<LoggedIn />) : (<Login />)
-		// <div>
-		// 	<Login />
-		// </div>
-	);
+		<Login />
+	)
 }
 
 export default App;
