@@ -65,3 +65,7 @@ npm start
 - Redux for State management. Store Access Tokens and User info in Redux store for easy access to all components.
 
 - Seqeulize as ORM for Postgres. Easy Raw Queries and well defined ORM API.
+
+## Notes
+
+It is simple to setup Email/Password authentication using Firebase, while ensuring the same level of security. However multiple UX studies have shown magic link/OTP solutions are more user friendly and seamless.
